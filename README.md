@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Sorting Hat Technical Description
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**Author**: Dhruv  
+**Organization**: The Signal Society  
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Project Proposal
 
-### `npm start`
+We would like to create an immersive "sorting hat"-style experience that will be used to sort people in our organization into a **lin**.  
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+We will use a **root mean squared error** (RMSE) approach for closeness—testing for similarity between a participant’s responses and those of the lin leaders.  
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- This application will be **frontend-only**, with **no backend**.  
+- It will only be used for **sorting**, not for data collection or storage.  
+- Each question will be rated on a scale of **1 to 5**.  
+- Each question will have a **custom moniker** for values **1** and **5**.
 
-### `npm test`
+---
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Proposed Technical Stack
 
-### `npm run build`
+1. **Tailwind CSS**:  
+   - For styling  
+   - For animations  
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. **React**:  
+   - The frontend will be entirely in React  
+   - Initialized with `npx create-react-app`
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. **Data**:  
+   - Stored in `.csv` files  
+   - Parsed into JSON arrays
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+---
 
-### `npm run eject`
+## Data Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+All data will reside in a `data` subfolder inside the `src` directory.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Question Model
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+- `question`: The text of the question  
+- `one_moniker`: Descriptor for a response of 1  
+- `five_moniker`: Descriptor for a response of 5  
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Score Model
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- `lin_name`: Name of the lin  
+- `q1`  
+- `q2`  
+- ...  
+- `q13`: Scores for each of the 12 questions
