@@ -1,5 +1,19 @@
-body {
+* {
+  box-sizing: border-box;
   margin: 0;
+  padding: 0;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: fixed;
+}
+
+body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -7,8 +21,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   background-color: #0a0a0a;
   color: #ffffff;
-  min-height: 100vh;
-  overflow-x: hidden;
 }
 
 /* Color themes for different questions */
@@ -27,6 +39,8 @@ body {
 .theme-12 { --primary: #FFC107; --secondary: #FFE082; --gradient: linear-gradient(45deg, #FFA000, #FFCA28); }
 
 .sorting-hat-container {
+  width: 100%;
+  height: 100vh;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -38,6 +52,9 @@ body {
   animation: gradientBG 15s ease infinite;
   position: relative;
   transition: all 1s ease;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sorting-hat-container::before {
@@ -57,7 +74,7 @@ body {
   border-radius: 1.5rem;
   padding: 2.5rem;
   max-width: 600px;
-  width: 100%;
+  width: calc(100% - 2rem);
   margin: 1rem;
   box-shadow: 
     0 8px 32px rgba(0, 0, 0, 0.2),
@@ -342,5 +359,134 @@ body {
   }
   100% {
     transform: translateY(0px);
+  }
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+  .sorting-hat-container {
+    padding: 1rem;
+    width: 100%;
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .question-card {
+    width: calc(100% - 1rem);
+    padding: 1.5rem;
+    margin: 0.5rem;
+    max-width: 100%;
+  }
+
+  .name-input-card h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .name-input-card p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .name-input {
+    width: calc(100% - 2rem);
+    max-width: 100%;
+  }
+
+  .choices-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.5rem;
+  }
+
+  .choice-button {
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .navigation-container {
+    margin-top: 1.5rem;
+  }
+
+  .next-button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    min-width: 160px;
+  }
+
+  .result-card h1 {
+    font-size: 2rem;
+  }
+
+  .result-card h2 {
+    font-size: 1.25rem;
+  }
+
+  .result-card p {
+    font-size: 1rem;
+  }
+}
+
+/* Small mobile devices */
+@media screen and (max-width: 480px) {
+  .sorting-hat-container {
+    padding: 0.5rem;
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .question-card {
+    width: calc(100% - 0.5rem);
+    padding: 1rem;
+    margin: 0.25rem;
+  }
+
+  .name-input-card h1 {
+    font-size: 1.5rem;
+  }
+
+  .choices-grid {
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.25rem;
+  }
+
+  .choice-button {
+    padding: 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 0.5rem;
+  }
+
+  .choice-labels {
+    font-size: 0.875rem;
+  }
+
+  .navigation-container p {
+    font-size: 0.875rem;
+  }
+
+  .next-button {
+    padding: 0.75rem 1.5rem;
+    min-width: 140px;
+  }
+
+  .choices-container {
+    margin: 1.5rem 0;
+  }
+}
+
+/* Ensure the container takes full height on mobile */
+@media screen and (max-height: 700px) {
+  .sorting-hat-container {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* Prevent zoom on input focus for iOS */
+@media screen and (max-width: 768px) {
+  input[type="text"],
+  input[type="number"],
+  textarea {
+    font-size: 16px !important;
   }
 }
